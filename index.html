@@ -1,9 +1,253 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>GN-Preview</title>
-  </head>
-  <body>
-    test
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview-it™ — Live Geometry Nodes Previews for Blender</title>
+  <meta name="description" content="Debug, explore, and design Geometry Nodes faster: live thumbnails, live attribute previews, selection visualization, custom attribute support, repeat zones, and clever caching.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #ffffff;
+      --mist: #d0d0d0;
+      --pink: #ff2e96;
+      --orange: #ff8c42;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Fixed narrow container for ~800px iframe embed */
+    .container {
+      max-width: 780px;   /* fits comfortably inside ~800px iframe */
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(20px);
+      background: rgba(10,10,10,0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 50;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 32px;   /* reduced for narrow layout */
+      font-weight: 900;
+    }
+
+    .logo span {
+      background: linear-gradient(90deg, #ff69b4, #ff2e96);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255,46,150,0.5);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      text-shadow: 0 0 40px rgba(255,46,150,0.4);
+    }
+
+    .highlight { color: var(--pink); font-weight: 600; }
+
+    .section { padding: 100px 0; text-align: center; }   /* reduced vertical padding */
+
+    .big-heading { 
+      font-size: 64px;      /* was 96px → much more readable at 800px */
+      line-height: 1.05; 
+      margin: 0;
+    }
+
+    .hero-logo {
+      font-size: 96px;      /* was 160px → still bold but fits */
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      font-size: 21px;      /* was 28px → comfortable at narrow width */
+      max-width: 100%;
+      margin: 40px auto;
+      opacity: 0.95;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(255,46,150,0.15);
+      border: 1px solid rgba(255,46,150,0.3);
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--pink);
+      margin: 30px 0 40px;
+    }
+
+    .screenshot {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      margin: 60px auto;
+      filter: drop-shadow(0 0 40px rgba(255,46,150,0.3));
+    }
+
+    .buy-button {
+      display: inline-block;
+      padding: 16px 36px;
+      background: var(--pink);
+      color: #000;
+      font-size: 21px;
+      font-weight: 800;
+      border-radius: 999px;
+      box-shadow: 0 15px 30px rgba(255,46,150,0.4);
+      transition: all 0.3s ease;
+    }
+
+    .buy-button:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 25px 50px rgba(255,46,150,0.5);
+    }
+
+    .price-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 40px 32px;
+      max-width: 100%;
+      margin: 60px auto;
+      backdrop-filter: blur(10px);
+    }
+
+    .price-card h3 {
+      font-size: 48px;
+      margin: 0 0 12px;
+    }
+
+    .old-price {
+      font-size: 28px;
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+
+    footer {
+      padding: 60px 0 40px;
+      font-size: 14px;
+      opacity: 0.6;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        <span>P</span>review-it™
+      </div>
+      <a href="https://your-gumroad-link.gumroad.com/l/previewit" class="buy-button">Get Early Access · $25</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="section">
+    <div class="container">
+      <div class="logo hero-logo">
+        <span>P</span>review-it™
+      </div>
+
+      <div class="badge">
+        Limited Time Early Access 50% OFF — $50 → $25
+      </div>
+
+      <h1 class="big-heading gradient-text">SEE EVERY NODE<br>IN REAL TIME</h1>
+
+      <p class="hero-text">
+        Preview-it™ draws <span class="highlight">live thumbnails</span> and <span class="highlight">attribute readouts</span> directly above your Geometry Nodes — no extra viewers, no guessing.<br><br>
+        Wire your graph and instantly see how each node changes geometry, fields, selections, and custom attributes.<br><br>
+        Built for modern GN workflows: repeat zones, nested groups, named attributes, and background caching that keeps Blender snappy.
+      </p>
+
+      <img src="gn-hero.png" alt="Preview-it in action" class="screenshot">
+    </div>
+  </section>
+
+  <!-- DEBUG SECTION -->
+  <section class="section" style="background: radial-gradient(circle at center, rgba(255,46,150,0.06) 0%, transparent 70%);">
+    <div class="container">
+      <h2 class="big-heading gradient-text">Debug Faster</h2>
+      <p class="hero-text">
+        Stop jumping between node editor and viewport. See selections, boolean masks, and custom attributes right where you work.<br>
+        Works with repeat zones and nested groups — attributes are tracked automatically.
+      </p>
+      <img src="attributes.png" alt="Attribute preview example" class="screenshot">
+    </div>
+  </section>
+
+  <!-- FLOW SECTION -->
+  <section class="section">
+    <div class="container">
+      <h2 class="big-heading gradient-text">Stay in Flow</h2>
+      <p class="hero-text">
+        Background worker + smart caching keeps Blender responsive even in heavy scenes.<br>
+        You control resolution and refresh rate — never fight lag while designing.
+      </p>
+      <img src="performance.png" alt="Performance example" class="screenshot">
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section">
+    <div class="container">
+      <div class="price-card">
+        <div style="font-size: 18px; color: var(--pink); margin-bottom: 20px;">Beta · Early Access</div>
+        <h3>$25</h3>
+        <div class="old-price">$50</div>
+        <p style="margin: 24px 0; font-size: 18px; opacity: 0.9;">
+          One-time purchase · All future 1.x updates included<br>
+          Price will gradually increase to ~$50 as features land
+        </p>
+        <a href="https://your-gumroad-link.gumroad.com/l/previewit" class="buy-button">Get Early Access · $25</a>
+      </div>
+
+      <div style="font-size: 16px; opacity: 0.8; line-height: 1.7; margin-top: 60px;">
+        <strong>Before You Purchase</strong><br><br>
+        Compatibility: Blender 4.0 – 4.5+ · Geometry Nodes editor (macOS / Windows / Linux)<br><br>
+        Important Notes: Core features are stable, but very large graphs or exotic add-on combinations may have edge cases.<br><br>
+        Refund Policy: If the add-on cannot run on your setup and we can’t fix it, full refund within 30 days.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Preview-it™ • Made with ❤️ for the Blender community
+  </footer>
+
+</body>
 </html>
