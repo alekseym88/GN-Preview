@@ -24,7 +24,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: Inter, sans-serif;
-      line-height: 1.3;
+      line-height: 1.35;
       -webkit-font-smoothing: antialiased;
       font-size: clamp(14px, 0.9vw + 11px, 16px);
     }
@@ -60,27 +60,24 @@
     .highlight { color: var(--pink); font-weight: 600; }
 
     .section {
-      padding: clamp(60px, 10vh, 100px) 0;
       text-align: center;
     }
 
     .big-heading {
       font-size: clamp(2.5rem, 4vw, 5.5rem);
-      line-height: 1.05;
+      line-height: 1.15;
       margin: 0;
       font-weight: 900;
     }
 
     .hero-text {
-      font-size: clamp(17px, 2.3vw, 21px);
-      max-width: 100%;
-      margin: clamp(24px, 4vw, 40px) auto;
+      font-size: clamp(14px, 2.3vw, 18px);
+      max-width: 550px;
+      margin: clamp(1rem, 4vw, 3rem) auto;
       opacity: 0.95;
     }
 
     /* PROMO HEADER */
-    
-
     .promo-header {
       position: relative;
       padding: clamp(14px, 2vw, 20px) 0;
@@ -199,6 +196,9 @@
     @media (max-width: 380px) {
       .badge-like { font-size: 17px; padding: 10px 18px; }
     }
+
+    
+
   </style>
 </head>
 <body>
@@ -230,22 +230,22 @@
         </span>
       </div>
       <div class="sub-line">
-        Buy once — receive all upcoming updates for free, including the full v1.0 release
+        Buy now — receive all upcoming updates for free, including the full v1.0 release
       </div>
     </div>
   </div>
 
   <!-- HERO -->
-  <section class="section" style="padding-top: 60px;">
+  <section class="section" style="padding-top: clamp(2rem, 10vh, 3.5rem);">
     <div class="container">
       <div class="logo hero-logo">
         <span>P</span>review-it™
       </div>
 
-      <h1 class="big-heading gradient-text" style="font-size: clamp(1.0rem, 4vw, 2.0rem);">What is it?</h1>
+      <h2 class="big-heading gradient-text" style="font-size: clamp(1.2rem, 4vw, 2.0rem);">What it can do?</h2>
 
-      <p class="hero-text">
-        Preview-it™ renders <span class="highlight">live thumbnails</span> directly above your Geometry Nodes to show 
+      <p class="hero-text" style="margin-top: 1rem;">
+        Preview-it™ renders <span class="highlight">live thumbnails</span> directly above each your Geometry Nodes to show 
         <span class="highlight">real-time geometry</span> and <span class="highlight">attribute data</span>. 
         No extra viewer nodes, no extra group hacks, no rerouting, no guessing — change any value and instantly see how each node  
         affects your <span class="highlight">geometry</span>, <span class="highlight">fields data</span>, <span class="highlight">selections</span>, and 
@@ -253,11 +253,12 @@
         Designed for complex Geometry Nodes workflows: <span class="highlight">all zones</span>, 
         <span class="highlight">nested groups</span>, <span class="highlight">named attributes</span>, 
         <span class="highlight">captured attributes</span> — all processed fast in a background process 
-        that <span class="highlight">keeps your Blender responsive</span>.
+        that <span class="highlight">keeps your Blender responsive</span>.<br><br>
+
+        <i style="font-size: 90%;">Upcoming releases will bring support for Shader Editor nodes, allowing live previews for material graphs as well.</i>
       </p>
 
       
-
       <div style="
         position: relative;
         width: 100%;
@@ -276,7 +277,6 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
           " 
-          width="560" height="315" 
           src="https://www.youtube-nocookie.com/embed/Xy__E4WyQhs?si=WIV9wiBK83tXz_3n&rel=0&loop=0&controls=1&cc_load_policy=0&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
 
@@ -285,67 +285,395 @@
   </section>
 
   <!-- DEBUG SECTION -->
-  <section class="section" style="background: radial-gradient(circle at center, rgba(255,46,150,0.06) 0%, transparent 70%);">
-    <div class="container">
-      <h2 class="big-heading gradient-text">Debug Faster</h2>
-      <p class="hero-text">
-        Stop muting nodes and squinting at the viewport to understand what’s going on.<br><br>
-        Preview-it™ shows selections, boolean masks, and custom attributes 
-        <span class="highlight">right inside the node editor</span> — where you actually work.<br><br>
-        Attributes are tracked through Capture Attribute, Named Attribute, repeat zones and nested groups,
-        so you can follow your data without breaking your flow.
-      </p>
-      <img src="attributes.png" alt="Attribute preview example" class="screenshot">
-    </div>
-  </section>
+    <!-- DEBUG SECTION -->
+    <section class="section" style="background: radial-gradient(circle at center, rgba(255,46,150,0.06) 0%, transparent 70%);">
+      <div class="container">
+        <h2 class="big-heading gradient-text">Work Smarter, Not Harder</h2>
+        <p class="hero-text">
+          Working with Geometry Nodes can get messy fast — especially when graphs grow complex.  
+          Instead of constantly checking the viewport, wiring temporary viewers, or digging through the spreadsheet,  
+          <span class="highlight">Preview-it™</span> gives you instant visual feedback for every node at once:  
+          <span class="highlight">geometry</span>, <span class="highlight">fields</span>, 
+          <span class="highlight">selections</span> and <span class="highlight">attributes</span>.
+        </p>
+      </div>
+  
+      <!-- 1. Geometry types / colors -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <!-- video / gif -->
+        <video src="demo-geometry-types.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <!-- caption strip -->
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Need to understand what each node is doing — or why <span class="highlight">nothing is coming through</span>? 
+          Preview-it™ <span class="highlight">color-codes every geometry type</span> (points, faces, instances, curves), 
+          so you instantly see what’s happening across <span class="highlight">all nodes including zones</span>.
+        </div>
+      </div>
+  
+      <!-- 2. Linked input sockets as fields -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-input-fields.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Want to see what a node is actually receiving through its input socket? 
+          Preview-it™ displays <span class="highlight">incoming values</span> as a 
+          <span class="highlight">live field</span> (values, vectors) based on the node’s domain — 
+          so instead of <span class="highlight">endlessly switching nodes into a Viewer</span> or reading the spreadsheet,  
+          you can see everything <span class="highlight">directly in the node preview</span>.
+        </div>
+      </div>
+  
+      <!-- 3. Selection sockets -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-selection.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Not sure what your <span class="highlight">Selection</span> socket is actually picking?  
+          Preview-it™ highlights <span class="highlight">selected vs. rejected</span> geometry directly in the preview, 
+          making masks, thresholds and comparisons instantly clear.
+        </div>
+      </div>
+  
+      <!-- 4. Default attributes -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-default-attributes.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Need to quickly inspect <span class="highlight">index</span>, <span class="highlight">ID</span>, 
+          <span class="highlight">position</span> or other built-in attributes?  
+          Preview-it™ shows a node’s <span class="highlight">default attributes for the selected domain</span>, 
+          giving you a clear view of how Blender handles the data.
+        </div>
+      </div>
+  
+      <!-- 5. User & captured attributes -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-user-attributes.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Working with <span class="highlight">Named Attribute</span> or <span class="highlight">Capture Attribute</span>?  
+          Preview-it™ shows your <span class="highlight">saved attributes</span> next to default ones and makes it easy to see how 
+          they <span class="highlight">evolve and change across nodes</span>, groups and zones.
+        </div>
+      </div>
+  
+      <!-- 6. Camera controls per preview -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-camera.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          Every preview has its own <span class="highlight">camera controls</span> — orbit, pan and zoom the render view.  
+          Zoom into tiny details, pull back to see the whole shape, and debug like a dedicated viewer, all
+          <span class="highlight">without leaving the node editor</span>.
+        </div>
+      </div>
 
+      <!-- 7. low-high res -->
+      <div style="max-width: 1000px; margin: 40px auto 0;">
+        <video src="demo-camera.mp4" autoplay muted loop playsinline
+               style="width:100%; display:block; border-radius:0;">
+        </video>
+        <div style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+          If a preview isn’t detailed enough for the node? You can switch between fast <span class="highlight">low-res</span> mode (default) and a 
+          sharper <span class="highlight">high-res</span> mode for complex geometry.  
+          Both modes are fully configurable in the add-on settings, so you can tune preview quality to match your workflow.
+        </div>
+      </div>
+
+
+    </section>
+  
   <!-- FLOW SECTION -->
   <section class="section">
     <div class="container">
-      <h2 class="big-heading gradient-text">Stay in Flow</h2>
+      <h2 class="big-heading gradient-text">Performance First</h2>
       <p class="hero-text">
-        Previews run in a dedicated background worker with smart change detection and caching.<br><br>
-        That means <span class="highlight">no bogged-down UI</span>: edit your graph, orbit the viewport,
-        and keep everything responsive while previews quietly update in the background.<br><br>
-        For heavy scenes, you can tune resolution and refresh rate — or pause previews entirely —
-        in one click.
+        <span class="highlight">Preview-it™</span> is built to be fast — <span class="highlight">really fast</span>.  
+        A separate background process handles all rendering and calculations, while the add-on’s smart caching 
+        system ensures your computer never feels heavy.
+
+        Edit your graph, move the preview camera, tweak values — Blender stays smooth the entire time.  
+        <br><br>
+        And for very complex scenes or heavy meshes, you have a <span class="highlight">full control</span> — adjust preview resolution, change update rate, 
+        enable camera culling, or pause previews instantly whenever you need better prerformace.
+    </p>
+    <img src="performance.png" alt="Performance example" class="screenshot">
+    <p style="
+          text-align:center;
+          padding:16px 12px;
+          font-style:italic;
+          font-size:clamp(14px,2vw,16px);
+          color:rgba(255,255,255,0.9);
+        ">
+        Note for MacOS users: you will see an extra bouncing Blender icon in the Dock.  
+        This is expected — the background process launches a separate Blender 
+        instance to run the EEVEE rendering environment, and macOS shows each instance 
+        as its own app.
       </p>
-      <img src="performance.png" alt="Performance example" class="screenshot">
     </div>
   </section>
+
 
   <!-- PRICING & BETA INFO -->
   <section class="section">
     <div class="container">
-      <div class="price-card">
-        <div style="font-size: clamp(16px, 2.3vw, 18px); color: var(--pink);">
-          Early-access beta price
-        </div>
-        <div style="font-size: clamp(40px, 7vw, 64px); font-weight: 900; margin: 16px 0;">$25</div>
-        <div style="font-size: clamp(22px, 3.5vw, 28px); opacity: 0.5; text-decoration: line-through;">$50</div>
-        <p style="margin: clamp(24px, 4vw, 32px) 0; font-size: clamp(17px, 2.4vw, 19px); opacity: 0.9; line-height: 1.6;">
-          One-time license for Preview-it™ 1.x — no subscriptions, no hidden tiers.<br>
-          All future 1.x updates are included for free.<br><br>
-          The price will climb towards ~$50 as Grease Pencil support, Blender 5.x features
-          and more tools ship.
-        </p>
-      </div>
 
-      <!-- BETA LIMITATIONS CARD -->
-      <div class="limitation-card">
+      <div class="limitation-card" style="
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(255,46,150,0.22),
+            rgba(255,46,150,0.10) 40%,
+            rgba(0,0,0,0.0) 80%
+          ),
+          linear-gradient(
+            135deg,
+            rgba(255,46,150,0.10),
+            rgba(255,140,66,0.10)
+          );
+        border: 1px solid rgba(255,46,150,0.25);
+        border-radius: 24px;
+        padding: clamp(26px, 4vw, 36px) clamp(22px, 4vw, 32px);
+        margin: clamp(40px, 7vw, 60px) auto;
+        backdrop-filter: blur(12px);
+        box-shadow:
+            0 0 22px rgba(255,46,150,0.18),
+            0 0 48px rgba(255,46,150,0.10);
+      ">
         <h3 style="font-size: clamp(20px, 3vw, 26px); color: var(--pink); margin-top: 0;">
           What’s missing in the beta?
         </h3>
-        <ul style="text-align: left; font-size: clamp(16px, 2.4vw, 18px); line-height: 1.7; margin: 24px 0; opacity: 0.95;">
-          <li>Grease Pencil objects in Geometry Nodes are <strong>not supported yet</strong> (planned before 1.0).</li>
-          <li>New Geometry Nodes features from the upcoming Blender 5.x series are <strong>still in progress</strong>.</li>
-          <li>Extremely large or deeply nested graphs may show occasional edge-case quirks (we’re actively hunting them down).</li>
+        <ul style="text-align: left; font-size: clamp(16px, 2.4vw, 18px); line-height: 1.5; margin: 24px 0; opacity: 0.95;">
+          <li>Grease Pencil objects inside Geometry Nodes are <span class="highlight">not supported yet</span>.</li>
+          <li>New Geometry Nodes features coming in Blender 5.x are <span class="highlight">currently in development</span>.</li>
+          <li>Currently only geometry-type output sockets can be previewed — support for 
+            <span class="highlight">value</span>, <span class="highlight">vectors</span>, and <span class="highlight">matrix</span> sockets type is on the way.</li>
+          <li>Heatmap mode for quick visual debugging of numeric fields.</li>
+          <li>Support Shader Editor: 
+            <a href="#"
+              onmouseover="
+              this.style.textShadow = '0 0 20px rgba(255,46,150,0.6)';
+              this.querySelector('.underline').style.backgroundSize='100% 100%'
+              "
+              onmouseout="
+              this.style.textShadow = '0 0 0 transparent';
+              this.querySelector('.underline').style.backgroundSize='0% 100%'
+              "
+              style="
+                --underline-height: 2px;
+
+                font-weight: 600;
+                text-decoration: none;
+                position: relative;
+
+                text-shadow: 0 0 0 transparent;
+
+                /* Gradient text by default */
+                background: linear-gradient(90deg, var(--pink), var(--orange));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+                padding-bottom: 2px;
+              ">Shader View<span class="underline" style="
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: var(--underline-height);
+                width: 100%;
+
+                /* Base gray underline always visible */
+                background: rgba(255,255,255, 0.18);
+
+                /* Gradient overlay that animates on hover */
+                background-image: linear-gradient(90deg, var(--pink), var(--orange));
+                background-repeat: no-repeat;
+                background-size: 0% 100%;
+                background-position: 0 0;
+
+                transition: background-size 0.35s ease;
+                display: block;
+              "></span></a> add-on will be merged into  <span class="highlight">Preview-it™</span> so you will be able to preview 
+            <span class="highlight">material shader nodes</span> as well.  
+            <i>This will make possible to preview <span class="highlight">attribute-driven shading</span> inside materials — something that existing Shader View or Node Preview add-ons cannot do, because it requires actual geometry data.</i></li>
+            <li>Support Blender versions 4.0 – 4.2.</li>
         </ul>
+        
         <p style="font-size: clamp(16px, 2.4vw, 18px); opacity: 0.9;">
-          All of these items are already on the roadmap — and every early buyer gets them
-          as free 1.x updates.
+          All of these features are already on the roadmap — and every early-access buyer receives them 
+          as <span class="highlight">free</span> 1.x updates.
         </p>
       </div>
+
+      <div style="
+        text-align:center;
+        margin: clamp(48px, 8vw, 72px) auto;
+        font-style: italic;
+        font-size: clamp(18px, 2.4vw, 22px);
+        color: rgba(255,255,255,0.95);
+      ">
+        “Vision is the art of seeing what is invisible to others.”
+        <div style="
+          margin-top: 10px;
+          font-size: clamp(14px, 2vw, 16px);
+          opacity: 0.55;
+        ">
+          — Jonathan Swift
+        </div>
+      </div>
+
+
+
+
+      <div class="price-card">
+
+        <!-- Badge -->
+        <div style="
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+          padding:6px 16px;
+          margin-bottom:20px;
+          border-radius:999px;
+          border:1px solid rgba(255,46,150,0.35);
+          background:rgba(255,46,150,0.12);
+          text-transform:uppercase;
+          font-size:clamp(12px,1.8vw,13px);
+          letter-spacing:0.14em;
+          color:var(--pink);
+          text-shadow:0 0 12px rgba(255,46,150,0.4);
+        ">
+          Early-access Beta · Limited Time
+        </div>
+      
+        <!-- Title -->
+        <h3 class="gradient-text" style="margin:0 0 28px;">
+          Early Bird Beta Pricing
+        </h3>
+      
+        <!-- Price Row -->
+        <div style="
+          display:flex;
+          align-items:baseline;
+          justify-content:center;
+          gap:14px;
+          margin-bottom:clamp(18px,3vw,28px);
+        ">
+          <span style="
+            font-size:clamp(40px,7vw,64px);
+            font-weight:900;
+            background:linear-gradient(90deg,var(--pink),var(--orange));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            text-shadow:0 0 28px rgba(255,46,150,0.65);
+          ">$25</span>
+      
+          <span style="
+            font-size:clamp(20px,3vw,26px);
+            opacity:0.45;
+            position:relative;
+            padding:0 2px;
+          ">
+            $60
+            <span style="
+              position:absolute;
+              left:0;
+              right:0;
+              top:50%;
+              height:2px;
+              background:linear-gradient(90deg,rgba(255,255,255,0.5),var(--pink));
+              transform:translateY(-50%);
+              pointer-events:none;
+            "></span>
+          </span>
+        </div>
+      
+        <!-- Description -->
+        <p class="hero-text" style="max-width:640px; margin-left:auto; margin-right:auto;">
+          All core workflows are <span class="highlight">tested and stable</span>, but as with any early-access release,
+          there may still be a few <span class="highlight">unexpected bugs</span> or 
+          <span class="highlight">edge-case behaviors</span> that will be fixed during beta.
+        </p>
+      
+        <!-- Refund note -->
+        <div style="
+          margin:clamp(24px,4vw,36px) auto 0;
+          padding:20px 22px;
+          max-width:680px;
+          border-radius:20px;
+          background:rgba(255,46,150,0.10);
+          border:1px solid rgba(255,46,150,0.28);
+          color:var(--pink);
+          font-size:clamp(14px,2vw,17px);
+          font-weight:600;
+          text-shadow:0 0 16px rgba(255,46,150,0.4);
+        ">
+          Refund Policy: if Preview-it™ cannot run properly and we can’t fix it, you’ll receive a full refund within 30 days.
+        </div>
+      
+        <!-- Roadmap Hint -->
+        <p class="hero-text" style="
+          font-size:clamp(15px,2.2vw,18px);
+          opacity:0.9;
+          margin-top:clamp(20px,3vw,30px);
+        ">
+          The price will rise toward <span class="highlight">~$60</span> as roadmap features ship.  
+          Full v1.0 expected in <span class="highlight">1–2 months</span>.
+        </p>
+      
+      </div>
+      
+
+      <!-- BETA LIMITATIONS CARD -->
+      
 
       <div style="font-size: clamp(14px, 2.2vw, 16px); opacity: 0.8; line-height: 1.7; margin-top: clamp(40px, 7vw, 60px);">
         <strong>Before you buy</strong><br><br>
