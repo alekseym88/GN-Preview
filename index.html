@@ -477,12 +477,12 @@
           What’s missing in the beta?
         </h2>
         <ul style="text-align: left; font-size: clamp(16px, 2.4vw, 18px); line-height: 1.5; margin: 24px 0; opacity: 0.95;">
-          <li>Grease Pencil objects inside Geometry Nodes are <span class="highlight">not supported yet</span>.</li>
-          <li>New Geometry Nodes features coming in Blender 5.x are <span class="highlight">currently in development</span>.</li>
-          <li>Visualize hidden logic in non-geometry nodes: <span class="highlight">Geometry Proximity</span> (show nearest points and distances), <span class="highlight">Raycast</span> (display rays and hit points), <span class="highlight">Index of Nearest</span> / <span class="highlight">Sample Nearest</span> (reveal nearest-neighbor pairs), <span class="highlight">Sample Index</span> (preview exactly what you’re sampling), <span class="highlight">Sample Nearest Surface</span>, and more — currently <span class="highlight">in development</span>.</li>
+          <li><span class="highlight">Grease Pencil</span> in Geometry Nodes are <span class="highlight">not supported yet</span>, but already on the roadmap.</li>
+          <li>New <span class="highlight">Blender 5.x</span> Geometry Nodes features are <span class="highlight">currently in development</span>.</li>
+          <li>Visualization for <span class="highlight">“hidden-logic”</span> nodes: <span class="highlight">Geometry Proximity</span> (show nearest points and distances), <span class="highlight">Raycast</span> (display rays and hit points), <span class="highlight">Index of Nearest</span> / <span class="highlight">Sample Nearest</span> (reveal nearest-neighbor pairs), <span class="highlight">Sample Index</span> (preview exactly what you’re sampling), <span class="highlight">Sample Nearest Surface</span>, and more — currently <span class="highlight">in development</span>.</li>
           <li>Currently only geometry-type output sockets can be previewed — support for 
             <span class="highlight">value</span>, <span class="highlight">vectors</span>, and <span class="highlight">matrix</span> sockets type is on the way.</li>
-          <li>Heatmap mode for quick visual debugging of numeric fields.</li>
+          <li><span class="highlight">Heatmap mode</span> — upcoming feature for quick visual debugging of numeric fields.</li>
           <li>Support Shader Editor: 
             <a href="https://superhivemarket.com/products/shader-view"
               onmouseover="
@@ -527,7 +527,7 @@
               "></span></a> add-on will be merged into  <span class="highlight">Preview-it™</span> so you will be able to preview 
             <span class="highlight">material shader nodes</span> as well.  
             <i>This will make possible to preview <span class="highlight">attribute-driven shading</span> inside materials — something that existing Shader View or Node Preview add-ons cannot do, because it requires actual geometry data.</i></li>
-            <li>Support Blender versions 4.0 – 4.2.</li>
+            <li>Support for Blender versions 4.0 – 4.2.</li>
         </ul>
         
         <p style="font-size: clamp(16px, 2.4vw, 18px); opacity: 0.9;">
@@ -742,8 +742,9 @@
         <details>
           <summary>What Blender versions are supported?</summary>
           <p>
-            Preview-it™ is tested on Blender 4.3 through 5.x on macOS, Windows, and Linux.
-          Support for new Blender 5.x geometry editor features is actively in development and will be rolled out throughout the beta.
+            Preview-it™ is tested on Blender 4.3 through 5.x on macOS, Windows, and Linux. 
+            All core features work in 5.0 — the add-on runs normally as long as you’re not using the newest 5.x-specific Geometry Nodes features.  
+            Support for those new 5.x features is actively in development and will be added during the beta.
           </p>
         </details>
         <details>
@@ -788,8 +789,8 @@
         <details>
           <summary>Does it preview materials or textures?</summary>
           <p>
-            Not yet. At the moment, materials and textures are ignored in Geometry Node Editor — previews focus strictly on 
-            geometry and attribute data.
+            Not yet. Right now, materials and textures are ignored — previews focus only on geometry and attribute data.  
+            Once ShaderView Add-on will be merged into Preview-it™, full material and texture previews will be supported as well.
           </p>
         </details>
       </div>
